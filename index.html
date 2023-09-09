@@ -1,0 +1,143 @@
+<!-- BHARAT INTERN | TASK-2 : Project Management Tool (PMT) -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Project Management System</title>
+  </head>
+  <body>
+    <!-- Header For Project Management System -->
+    <div class="card" style="padding: 1rem">
+      <h1>PROJECT MANAGEMENT SYSTEM</h1>
+    </div>
+
+    <!-- Main Container For Project Management System -->
+    <div class="content-wrapper">
+      <!-- Input Block For Project Management System -->
+      <div class="card">
+        <div
+          style="
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            align-items: center;
+          "
+        >
+          <div>
+            <div class="form-group">
+              <h4>Users</h4>
+              <!-- Add User-Btn -->
+              <button id="addUser">Add User</button>
+              <div class="user-list">
+                <div id="userChips"></div>
+              </div>
+            </div>
+
+            <h4>Tasks</h4>
+            <div class="row" style="margin-bottom: 50px">
+              <div class="col-md-12">
+                <!-- Add Btn -->
+                <button onclick="openTaskModal('add')">Add Task</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Chat Btn -->
+          <button onclick="openChatModal()">Chat</button>
+          <img
+            src="Project Management System Image.jpg"
+            alt="Your Image"
+            width="300"
+          />
+        </div>
+
+        <!-- Task Table For PMS -->
+        <div class="task-table">
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Task</th>
+                <th>Status</th>
+                <th>Is Started</th>
+                <th>Duration</th>
+              </tr>
+            </thead>
+            <tbody id="taskTableBody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ChatBox Model -->
+      <div id="chatModal" class="new-modal">
+        <div class="new-modal-content" style="width: 50%; height: 50vh">
+          <span class="close" onclick="closeChatModal()">&times;</span>
+          <div style="display: flex">
+            <div style="width: 40%">
+              <label for="recipientSelect">Select recipient:</label>
+              <select id="recipientSelect" style="margin-bottom: 1rem">
+                <option value="">Select a user</option>
+              </select>
+              <label for="messageInput">Message:</label>
+              <textarea
+                id="messageInput"
+                rows="4"
+                placeholder="Type your message here"
+              ></textarea>
+              <button
+                id="sendButton"
+                style="margin-top: 1rem"
+                onclick="sendMessage()"
+              >
+                Send
+              </button>
+            </div>
+            <div
+              style="
+                display: flex;
+                align-items: center;
+                width: 100%;
+                flex-direction: column;
+              "
+            >
+              <p>Message History</p>
+              <ul id="messageList"></ul>
+              <!-- Add this line for displaying messages -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--  Add User modal -->
+    <div id="myModal" class="new-modal">
+      <div class="new-modal-content">
+        <div style="display: flex; justify-content: space-between">
+          <h2>Add User</h2>
+          <span id="close" style="font-size: 1rem; cursor: pointer">X</span>
+        </div>
+        <input type="text" id="modalUserInput" placeholder="Enter a new user" />
+        <button id="saveUser">Save</button>
+      </div>
+    </div>
+
+    <!-- Task Modal -->
+    <div id="taskModal" class="new-modal">
+      <div class="new-modal-content">
+        <span class="close" onclick="closeTaskModal()">&times;</span>
+        <label for="userSelect">Select a user:</label>
+        <select id="userSelect">
+          <option value="">Select a user</option>
+        </select>
+        <label for="modalTaskInput">Task:</label>
+        <input type="text" id="modalTaskInput" placeholder="Enter a task" />
+        <button id="modalTaskButton" onclick="saveTask()">Save</button>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
